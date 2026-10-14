@@ -1,0 +1,1640 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Chocolates | Choco Hub</title>
+    <meta name="description"
+          content="Explore delicious chocolates, truffles, gift boxes and more at Choco Hub.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* ==================================
+           1. GLOBAL STYLES AND COLOUR THEME
+        ================================== */
+
+        :root {
+            --brown: #321a12;
+            --dark: #21100c;
+            --gold: #d9a441;
+            --cream: #fffaf4;
+            --light: #f5e8d8;
+            --muted: #80685a;
+            --white: #ffffff;
+            --border: #eadbca;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--brown);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 65px 0 85px;
+        }
+
+        .eyebrow {
+            color: #a66c1d;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.2;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        /* ==================================
+           2. NAVIGATION BAR
+        ================================== */
+
+        header {
+            background: var(--dark);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #f0e3d8;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.current {
+            color: var(--gold);
+        }
+
+        .nav-links .nav-cta {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 11px 17px;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .nav-links .nav-cta:hover {
+            color: var(--dark);
+            background: #efbd5b;
+        }
+
+        .cart-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count {
+            display: inline-grid;
+            place-items: center;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid #80685a;
+            color: white;
+            padding: 6px 11px;
+            border-radius: 8px;
+            font-size: 22px;
+        }
+
+        /* ==================================
+           3. PAGE HERO / BANNER
+        ================================== */
+
+        .page-hero {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(
+                    rgba(33, 16, 12, 0.84),
+                    rgba(33, 16, 12, 0.84)
+                ),
+                url('https://images.unsplash.com/photo-1548907040-4d42faa7d4a5?auto=format&fit=crop&w=1800&q=85')
+                center/cover no-repeat;
+        }
+
+        .page-hero-content {
+            padding: 55px 0;
+        }
+
+        .breadcrumbs {
+            color: #e0c9b4;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--gold);
+        }
+
+        .page-hero .eyebrow {
+            color: var(--gold);
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 62px);
+            margin: 10px 0 12px;
+            line-height: 1.15;
+        }
+
+        .page-hero p {
+            color: #eddfd3;
+            max-width: 570px;
+            margin: auto;
+        }
+
+        /* ==================================
+           4. PROMISE STRIP
+        ================================== */
+
+        .promise-strip {
+            background: var(--brown);
+            color: #f7e9d8;
+            padding: 18px 0;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .promise-grid span {
+            color: var(--gold);
+            margin-right: 7px;
+        }
+
+        /* ==================================
+           5. PRODUCT SECTION HEADER
+        ================================== */
+
+        .catalog-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .catalog-heading h2 {
+            margin-top: 7px;
+        }
+
+        .catalog-heading p {
+            margin-top: 9px;
+            font-size: 14px;
+        }
+
+        .result-count {
+            color: var(--muted);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* ==================================
+           6. SEARCH AND FILTER CONTROLS
+        ================================== */
+
+        .catalog-controls {
+            display: grid;
+            grid-template-columns: minmax(180px, 1fr) 220px 190px;
+            gap: 14px;
+            margin-bottom: 27px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .search-box input,
+        .catalog-controls select {
+            width: 100%;
+            height: 49px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 0 14px;
+            background: white;
+            color: var(--brown);
+            outline: none;
+        }
+
+        .search-box input {
+            padding-left: 43px;
+        }
+
+        .search-box input:focus,
+        .catalog-controls select:focus {
+            border-color: #b88a42;
+            box-shadow: 0 0 0 3px rgba(217,164,65,0.13);
+        }
+
+        /* ==================================
+           7. CATEGORY BUTTONS
+        ================================== */
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .category-btn {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--brown);
+            padding: 10px 19px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--brown);
+            color: white;
+            border-color: var(--brown);
+        }
+
+        /* ==================================
+           8. PRODUCT CARDS
+        ================================== */
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #f0e4d8;
+            border-radius: 15px;
+            box-shadow: 0 5px 24px rgba(50, 26, 18, 0.045);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(50, 26, 18, 0.11);
+        }
+
+        .product-image {
+            position: relative;
+            height: 225px;
+            overflow: hidden;
+            background: var(--light);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.07);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            background: #fffaf4;
+            color: var(--brown);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-category {
+            color: #a66c1d;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            margin: 5px 0 7px;
+        }
+
+        .product-description {
+            color: var(--muted);
+            font-size: 12px;
+            min-height: 39px;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 9px;
+            margin-top: 17px;
+            padding-top: 14px;
+            border-top: 1px solid #f0e5d9;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+
+        .price small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        .add-btn {
+            border: none;
+            background: var(--brown);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .add-btn:hover {
+            background: #75432e;
+        }
+
+        .add-btn:disabled {
+            background: #547653;
+            cursor: default;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            padding: 65px 20px;
+            text-align: center;
+            background: white;
+            border: 1px dashed var(--border);
+            border-radius: 15px;
+        }
+
+        .no-results h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ==================================
+           9. PROMOTIONAL BANNER
+        ================================== */
+
+        .gift-banner {
+            background: var(--light);
+            padding: 60px 0;
+        }
+
+        .gift-banner-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+        }
+
+        .gift-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(27px, 4vw, 38px);
+            line-height: 1.2;
+            margin: 8px 0 12px;
+        }
+
+        .gift-banner p {
+            color: var(--muted);
+            max-width: 570px;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 13px 23px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            background: #efbd5b;
+        }
+
+        /* ==================================
+           10. FOOTER
+        ================================== */
+
+        footer {
+            background: var(--dark);
+            color: #eee0d5;
+            padding: 52px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 35px;
+        }
+
+        .footer-about p {
+            max-width: 360px;
+            color: #bfa99a;
+            font-size: 13px;
+            margin-top: 14px;
+        }
+
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 15px;
+            margin-bottom: 14px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #cbb7a8;
+            font-size: 13px;
+            margin: 9px 0;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            border-top: 1px solid #493128;
+            padding-top: 20px;
+            text-align: center;
+            color: #aa9586;
+            font-size: 12px;
+        }
+
+        /* ==================================
+           11. CART DRAWER
+        ================================== */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(20, 10, 7, 0.55);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s, visibility 0.25s;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: min(430px, 100%);
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            transform: translateX(100%);
+            transition: transform 0.3s;
+        }
+
+        .cart-overlay.open .cart-drawer {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-header h2 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .close-cart {
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 20px;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px 0;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 45px 10px;
+            color: var(--muted);
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item h3 {
+            font-size: 14px;
+        }
+
+        .cart-item p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .quantity-controls button,
+        .remove-item {
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            min-width: 27px;
+            height: 27px;
+            padding: 2px 7px;
+            color: var(--brown);
+        }
+
+        .remove-item {
+            color: #a13e31;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            border: none;
+            border-radius: 30px;
+            padding: 15px;
+            background: var(--brown);
+            color: white;
+            font-weight: 700;
+        }
+
+        .checkout-btn:hover {
+            background: #75432e;
+        }
+
+        .checkout-btn:disabled {
+            background: #b7a79b;
+            cursor: not-allowed;
+        }
+
+        .cart-note {
+            color: var(--muted);
+            font-size: 11px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* ==================================
+           12. RESPONSIVE DESIGN
+        ================================== */
+
+        @media (max-width: 1000px) {
+            .products-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .product-image {
+                height: 210px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .navbar {
+                min-height: 70px;
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 0;
+                padding: 8px 0 14px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 5px;
+                font-size: 14px;
+            }
+
+            .nav-links .nav-cta {
+                text-align: center;
+                margin-top: 7px;
+            }
+
+            .page-hero {
+                min-height: 270px;
+            }
+
+            .promise-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .catalog-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .catalog-controls {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .search-box {
+                grid-column: 1 / -1;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+
+            .product-image {
+                height: 190px;
+            }
+
+            .product-info {
+                padding: 13px;
+            }
+
+            .product-info h3 {
+                font-size: 17px;
+            }
+
+            .product-description {
+                min-height: 56px;
+            }
+
+            .product-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .add-btn {
+                width: 100%;
+            }
+
+            .gift-banner-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+
+            .catalog-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                grid-column: auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="navbar container">
+            <a href="index.html" class="logo">
+                🍫 Choco<span>Hub</span>
+            </a>
+
+            <button class="menu-toggle"
+                    id="menu-toggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="nav-links">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html" class="current"
+                       aria-current="page">Our Chocolates</a></li>
+                <li><a href="index.html#about">Our Story</a></li>
+                <li><a href="index.html#why-us">Why Choco Hub?</a></li>
+                <li>
+                    <a href="#cart" class="cart-link" id="open-cart">
+                        Bag <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+                <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- PAGE BANNER -->
+        <section class="page-hero">
+            <div class="container page-hero-content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> &nbsp; / &nbsp; Our Chocolates
+                </div>
+
+                <span class="eyebrow">Discover Something Delicious</span>
+
+                <h1>Our Chocolate Collection</h1>
+
+                <p>
+                    From rich dark chocolate to silky truffles and
+                    thoughtful gift boxes, find a little happiness
+                    in every chocolate moment.
+                </p>
+            </div>
+        </section>
+
+        <!-- BRAND PROMISE -->
+        <section class="promise-strip">
+            <div class="container promise-grid">
+                <div><span>✦</span> A Delicious Variety</div>
+                <div><span>♡</span> Sweet Moments for Everyone</div>
+                <div><span>🎁</span> Chocolate Gifting Ideas</div>
+            </div>
+        </section>
+
+        <!-- PRODUCT CATALOG -->
+        <section class="section" id="catalog">
+            <div class="container">
+
+                <div class="catalog-heading">
+                    <div>
+                        <span class="eyebrow">Made for Chocolate Lovers</span>
+                        <h2 class="section-title">Shop Our Collection</h2>
+                        <p class="muted">
+                            Find your favourite flavour and treat yourself.
+                        </p>
+                    </div>
+
+                    <span class="result-count" id="result-count"
+                          aria-live="polite">8 products</span>
+                </div>
+
+                <!-- SEARCH AND SORT -->
+                <div class="catalog-controls">
+                    <label class="search-box">
+                        <span class="search-icon" aria-hidden="true">⌕</span>
+                        <input type="search"
+                               id="search-input"
+                               placeholder="Search chocolates..."
+                               aria-label="Search chocolates">
+                    </label>
+
+                    <select id="category-select"
+                            aria-label="Filter by category">
+                        <option value="all">All Categories</option>
+                        <option value="dark">Dark Chocolate</option>
+                        <option value="milk">Milk Chocolate</option>
+                        <option value="truffles">Truffles</option>
+                        <option value="gifts">Gift Boxes</option>
+                    </select>
+
+                    <select id="sort-select" aria-label="Sort products">
+                        <option value="featured">Sort: Featured</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+
+                <!-- QUICK CATEGORY FILTERS -->
+                <div class="category-list" aria-label="Chocolate categories">
+                    <button class="category-btn active"
+                            data-category="all" aria-pressed="true">
+                        All Chocolates
+                    </button>
+
+                    <button class="category-btn"
+                            data-category="dark" aria-pressed="false">
+                        Dark Chocolate
+                    </button>
+
+                    <button class="category-btn"
+                            data-category="milk" aria-pressed="false">
+                        Milk Chocolate
+                    </button>
+
+                    <button class="category-btn"
+                            data-category="truffles" aria-pressed="false">
+                        Truffles
+                    </button>
+
+                    <button class="category-btn"
+                            data-category="gifts" aria-pressed="false">
+                        Gift Boxes
+                    </button>
+                </div>
+
+                <!-- PRODUCTS ARE GENERATED BY JAVASCRIPT -->
+                <div class="products-grid" id="products-grid"
+                     aria-live="polite"></div>
+
+            </div>
+        </section>
+
+        <!-- GIFT PROMOTION -->
+        <section class="gift-banner">
+            <div class="container gift-banner-inner">
+                <div>
+                    <span class="eyebrow">A Gift Full of Happiness</span>
+                    <h2>Make Someone's Day Sweeter.</h2>
+                    <p>
+                        Celebrate birthdays, anniversaries, special
+                        occasions, or everyday moments with a thoughtful
+                        chocolate gift.
+                    </p>
+                </div>
+
+                <a href="#catalog" class="btn btn-primary"
+                   id="gift-explore">
+                    Explore Gift Boxes →
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        🍫 Choco<span>Hub</span>
+                    </a>
+
+                    <p>
+                        A world of chocolate, a little moment of
+                        happiness. Discover sweet treats and gifting
+                        ideas for every occasion.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="product.html">Our Chocolates</a>
+                    <a href="index.html#about">Our Story</a>
+                    <a href="index.html#why-us">Why Choco Hub?</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Get in Touch</h3>
+                    <a href="mailto:hello@chocohub.example">Email Us</a>
+                    <a href="index.html#contact">Customer Support</a>
+                    <a href="#catalog">Browse Products</a>
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © <span id="year"></span> Choco Hub.
+                All rights reserved. Made with ♡ and chocolate.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHOPPING CART DRAWER -->
+    <div class="cart-overlay" id="cart-overlay"
+         aria-hidden="true">
+        <aside class="cart-drawer"
+               role="dialog"
+               aria-modal="true"
+               aria-labelledby="cart-title">
+
+            <div class="cart-header">
+                <h2 id="cart-title">Your Chocolate Bag</h2>
+
+                <button class="close-cart" id="close-cart"
+                        aria-label="Close shopping cart">×</button>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <div class="empty-cart">
+                    <p>Your bag is waiting for something sweet! 🍫</p>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <span id="cart-total">₹0</span>
+                </div>
+
+                <button class="checkout-btn" id="checkout-btn" disabled>
+                    Continue to Order
+                </button>
+
+                <p class="cart-note">
+                    Demo cart: orders are not submitted or payments processed.
+                </p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ======================================
+        // 1. PRODUCT DATA
+        // Replace these sample products and prices
+        // with your real Choco Hub inventory.
+        // ======================================
+
+        const products = [
+            {
+                id: 1,
+                name: "Dark Chocolate",
+                category: "dark",
+                categoryLabel: "Dark Chocolate",
+                price: 199,
+                badge: "Bestseller",
+                description: "Rich cocoa flavour for true chocolate lovers.",
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 2,
+                name: "Creamy Milk Chocolate",
+                category: "milk",
+                categoryLabel: "Milk Chocolate",
+                price: 149,
+                badge: "Popular",
+                description: "Smooth and creamy sweetness in every bite.",
+                image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 3,
+                name: "Chocolate Truffles",
+                category: "truffles",
+                categoryLabel: "Truffles",
+                price: 299,
+                badge: "Special",
+                description: "Decadent little bites of chocolate luxury.",
+                image: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 4,
+                name: "Choco Gift Box",
+                category: "gifts",
+                categoryLabel: "Gift Boxes",
+                price: 499,
+                badge: "Gift Pick",
+                description: "A thoughtful chocolate surprise for someone special.",
+                image: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 5,
+                name: "Classic Cocoa Bites",
+                category: "dark",
+                categoryLabel: "Dark Chocolate",
+                price: 179,
+                badge: "Classic",
+                description: "A delightful dark chocolate treat for any day.",
+                image: "https://images.unsplash.com/photo-1548907040-4d42faa7d4a5?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 6,
+                name: "Hazelnut Milk Choco",
+                category: "milk",
+                categoryLabel: "Milk Chocolate",
+                price: 229,
+                badge: "Favourite",
+                description: "A tempting combination of chocolate and hazelnut.",
+                image: "https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 7,
+                name: "Luxury Truffle Box",
+                category: "truffles",
+                categoryLabel: "Truffles",
+                price: 349,
+                badge: "Premium",
+                description: "An elegant collection for a special occasion.",
+                image: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 8,
+                name: "Celebration Gift Hamper",
+                category: "gifts",
+                categoryLabel: "Gift Boxes",
+                price: 699,
+                badge: "Special Gift",
+                description: "Share the joy with a beautiful chocolate hamper.",
+                image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80"
+            }
+        ];
+
+        // ======================================
+        // 2. SELECT PAGE ELEMENTS
+        // ======================================
+
+        const productsGrid = document.getElementById("products-grid");
+        const searchInput = document.getElementById("search-input");
+        const categorySelect = document.getElementById("category-select");
+        const sortSelect = document.getElementById("sort-select");
+        const resultCount = document.getElementById("result-count");
+
+        const cartOverlay = document.getElementById("cart-overlay");
+        const cartItemsElement = document.getElementById("cart-items");
+        const cartCountElement = document.getElementById("cart-count");
+        const cartTotalElement = document.getElementById("cart-total");
+        const checkoutButton = document.getElementById("checkout-btn");
+
+        const formatPrice = amount =>
+            new Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "INR",
+                maximumFractionDigits: 0
+            }).format(amount);
+
+        let activeCategory = "all";
+
+        // Cart is held in memory for this demo.
+        // Refreshing the page resets the cart.
+        const cart = new Map();
+
+        // ======================================
+        // 3. DISPLAY PRODUCT CARDS
+        // ======================================
+
+        function renderProducts(items) {
+            resultCount.textContent =
+                items.length + (items.length === 1 ? " product" : " products");
+
+            if (items.length === 0) {
+                productsGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No chocolates found 🍫</h3>
+                        <p>Try a different search or select another category.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            productsGrid.innerHTML = items.map(product => `
+                <article class="product-card">
+                    <div class="product-image">
+                        <img
+                            src="${product.image}"
+                            alt="${product.name.replace(/&/g, "&amp;").replace(/"/g, "&quot;")}"
+                            loading="lazy">
+
+                        <span class="product-badge">
+                            ${product.badge}
+                        </span>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-category">
+                            ${product.categoryLabel}
+                        </span>
+
+                        <h3>${product.name}</h3>
+
+                        <p class="product-description">
+                            ${product.description}
+                        </p>
+
+                        <div class="product-bottom">
+                            <span class="price">
+                                ${formatPrice(product.price)}
+                                <small>Sample price</small>
+                            </span>
+
+                            <button
+                                class="add-btn"
+                                data-add="${product.id}">
+                                Add to Bag +
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        // ======================================
+        // 4. SEARCH, FILTER AND SORT
+        // ======================================
+
+        function updateProducts() {
+            const searchTerm = searchInput.value
+                .trim()
+                .toLowerCase();
+
+            let filtered = products.filter(product => {
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    product.category === activeCategory;
+
+                const searchableText =
+                    product.name + " " +
+                    product.categoryLabel + " " +
+                    product.description;
+
+                const matchesSearch =
+                    searchableText.toLowerCase().includes(searchTerm);
+
+                return matchesCategory && matchesSearch;
+            });
+
+            const sortOption = sortSelect.value;
+
+            if (sortOption === "low-high") {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortOption === "high-low") {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortOption === "name") {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+                filtered.sort((a, b) => a.id - b.id);
+            }
+
+            renderProducts(filtered);
+        }
+
+        searchInput.addEventListener("input", updateProducts);
+        categorySelect.addEventListener("change", function () {
+            activeCategory = this.value;
+            syncCategoryButtons();
+            updateProducts();
+        });
+        sortSelect.addEventListener("change", updateProducts);
+
+        function syncCategoryButtons() {
+            document.querySelectorAll(".category-btn").forEach(button => {
+                const isActive =
+                    button.dataset.category === activeCategory;
+
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+            });
+
+            categorySelect.value = activeCategory;
+        }
+
+        document.querySelectorAll(".category-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                activeCategory = this.dataset.category;
+                syncCategoryButtons();
+                updateProducts();
+            });
+        });
+
+        document.getElementById("gift-explore").addEventListener("click", () => {
+            activeCategory = "gifts";
+            syncCategoryButtons();
+            updateProducts();
+        });
+
+        // ======================================
+        // 5. ADD PRODUCTS TO CART
+        // ======================================
+
+        productsGrid.addEventListener("click", function (event) {
+            const button = event.target.closest("[data-add]");
+
+            if (!button) return;
+
+            const productId = Number(button.dataset.add);
+            const product = products.find(item => item.id === productId);
+
+            if (!product) return;
+
+            const current = cart.get(productId);
+
+            if (current) {
+                current.quantity += 1;
+            } else {
+                cart.set(productId, {
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            renderCart();
+
+            const originalText = button.textContent;
+            button.textContent = "Added ✓";
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 700);
+        });
+
+        // ======================================
+        // 6. RENDER SHOPPING CART
+        // ======================================
+
+        function renderCart() {
+            const cartProducts = Array.from(cart.values());
+
+            const totalQuantity = cartProducts.reduce(
+                (sum, item) => sum + item.quantity, 0
+            );
+
+            const totalPrice = cartProducts.reduce(
+                (sum, item) => sum + item.price * item.quantity, 0
+            );
+
+            cartCountElement.textContent = totalQuantity;
+            cartTotalElement.textContent = formatPrice(totalPrice);
+
+            checkoutButton.disabled = cartProducts.length === 0;
+
+            if (cartProducts.length === 0) {
+                cartItemsElement.innerHTML = `
+                    <div class="empty-cart">
+                        <p>Your bag is waiting for something sweet! 🍫</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cartItemsElement.innerHTML = cartProducts.map(item => `
+                <div class="cart-item">
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p>${formatPrice(item.price)} each</p>
+
+                        <div class="quantity-controls">
+                            <button data-decrease="${item.id}"
+                                    aria-label="Decrease ${item.name} quantity">
+                                −
+                            </button>
+
+                            <span>${item.quantity}</span>
+
+                            <button data-increase="${item.id}"
+                                    aria-label="Increase ${item.name} quantity">
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="text-align:right">
+                        <strong>
+                            ${formatPrice(item.price * item.quantity)}
+                        </strong>
+
+                        <br>
+
+                        <button class="remove-item"
+                                data-remove="${item.id}"
+                                aria-label="Remove ${item.name}">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        cartItemsElement.addEventListener("click", function (event) {
+            const button = event.target.closest("button");
+
+            if (!button) return;
+
+            if (button.dataset.increase) {
+                const item = cart.get(Number(button.dataset.increase));
+                if (item) item.quantity++;
+            }
+
+            if (button.dataset.decrease) {
+                const id = Number(button.dataset.decrease);
+                const item = cart.get(id);
+
+                if (item) {
+                    item.quantity--;
+
+                    if (item.quantity <= 0) {
+                        cart.delete(id);
+                    }
+                }
+            }
+
+            if (button.dataset.remove) {
+                cart.delete(Number(button.dataset.remove));
+            }
+
+            renderCart();
+        });
+
+        // ======================================
+        // 7. OPEN AND CLOSE CART
+        // ======================================
+
+        const openCartButton = document.getElementById("open-cart");
+        const closeCartButton = document.getElementById("close-cart");
+
+        let previouslyFocusedElement = null;
+
+        function openCart() {
+            previouslyFocusedElement = document.activeElement;
+            cartOverlay.classList.add("open");
+            cartOverlay.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            closeCartButton.focus();
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove("open");
+            cartOverlay.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+            }
+        }
+
+        openCartButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            openCart();
+        });
+
+        closeCartButton.addEventListener("click", closeCart);
+
+        cartOverlay.addEventListener("click", function (event) {
+            if (event.target === cartOverlay) {
+                closeCart();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" &&
+                cartOverlay.classList.contains("open")) {
+                closeCart();
+            }
+        });
+
+        // ======================================
+        // 8. DEMO CHECKOUT
+        // ======================================
+
+        checkoutButton.addEventListener("click", function () {
+            if (cart.size === 0) return;
+
+            alert(
+                "Your chocolate bag is ready! " +
+                "To accept real orders, connect this page to a backend " +
+                "or an ordering service."
+            );
+        });
+
+        // ======================================
+        // 9. MOBILE NAVIGATION
+        // ======================================
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // ======================================
+        // 10. FOOTER YEAR AND INITIAL DISPLAY
+        // ======================================
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        renderProducts(products);
+        renderCart();
+    </script>
+
+</body>
+</html>
